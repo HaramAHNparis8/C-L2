@@ -1,0 +1,104 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void exo1(){
+	printf("bonjour");
+}
+
+void exo2(){
+
+	short int z=0;
+	int a=4; // on sait que sizeof(int)==4
+	char b=2;
+	short int c=1;
+	printf("%p\n",&a);
+	printf("%d\n",b);
+	printf("%p\n",&c);
+
+}
+
+void exo3(){
+
+    int a,b;
+    int *p = &a;
+    *p = 1;
+    p = &b;
+    *p = a + 3;
+    printf("%d\n",a);
+    printf("%d\n",b);
+    
+}
+
+void exo6(){
+	int a=3;
+	int b=4;
+	int *p=malloc(sizeof(a)*3);
+	char* pc=(char*) p;
+	p[1]=0;
+	p[4]=0;
+	pc[1]=0;
+	printf("taille %ld\n",sizeof(int));
+	printf("taille %ld\n",sizeof(int*));
+	printf("&a:%p\n",&a);
+	printf("&b:%p\n",&b);
+	printf("&p:%p\n",&p);
+	printf(" p:%p\n",p);
+}
+void exo7(){
+	 int i;
+	 int *ptr = malloc(sizeof(int) * 1000);
+         ptr=malloc(sizeof(int)*1000);
+         for(i=0;i<1000;i++){
+		 ptr[i]=i;
+	 }
+	 for(i = 0; i < 1000; i++){
+		 printf("%d\n",ptr[i]);
+		
+	 
+	 }	 
+
+}
+
+void exo8(){
+
+	int a=1;
+	int* p;
+	int b=2;
+	int** h=&p;
+	p=&a;
+	int* d=&b;
+	*h=&b;
+	**h=4;
+	*p=5;
+	printf("a:%d,b%d\n",a,b);
+}
+
+void exo9(int argc, char **argv){
+	int n, i;
+	char *p;
+	if (argc > 0) {
+		n = strlen(argv[0]);
+		p = (char *)malloc(sizeof(char) * (n + 1));
+	}
+	for (i = 0; i < n; i++){
+            p[i] = argv[0][n - i - 1];
+	    
+	    p[n] = '\0';
+	    printf("%s\n", p);
+	    free(p);
+	}
+
+}
+int main(void){
+
+	//exo1();
+	//exo2();
+	//exo3();
+	//exo6();
+	//exo7();
+	//exo8();
+	char **H[5] ={'H','E','L','L','O'};
+	exo9(5,**H);
+	return 0;
+
+}

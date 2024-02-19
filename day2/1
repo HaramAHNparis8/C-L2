@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+int calcUI(int n){
+	if(n == 0){
+
+		return 1;
+	}
+	else{
+
+	return 3 * calcUI(n - 1) + 1;
+	}
+
+}
+int calcUI_itr(int n){
+	int i,res = 1;
+
+	for(i = 0; i < n; i++){
+
+		res = 3 * res + 1;
+	}
+
+	return res;
+
+}
+void swap(char **a, char**b){
+	char **tmp;
+	*tmp = *a;
+	*a = *b;
+	*b = *a;
+
+}
+
+void hanoi(int n,char d,char i,char a){
+	if(n == 0){
+		printf("%c",d);
+
+	}
+	else{
+		printf("%c -> %c",d,a);
+		swap(&d,&a);
+		hanoi(n - 1, i,a,d);
+	}
+}
+
+
+int main(void){
+	//printf("%d\n",calcUI(3));
+	//printf("%d\n",calcUI_itr(3));
+	hanoi(3,'A','B','C');
+}
